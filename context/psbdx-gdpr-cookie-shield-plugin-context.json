@@ -1,1 +1,2759 @@
-
+{
+  "_meta": {
+    "name": "PSBDx GDPR Cookie Shield \u2013 Cookie Context Library",
+    "description": "External cookie knowledge base used by the PSBDx GDPR Cookie Shield WordPress plugin to enrich automatically scanned cookies with accurate provider, purpose, category and expiry information.",
+    "version": "2.0.0",
+    "last_updated": "2026-05-07",
+    "license": "MIT",
+    "repository": "https://github.com/m-farhan-hamim/Cookie-context-for-PSBDx-GDPR-Cookie-Shield-wp-Plugin",
+    "maintainers": [
+      "atwfarhan",
+      "mfhamim",
+      "psbdx"
+    ],
+    "schema_notes": [
+      "Each entry in 'cookies' represents one known cookie or cookie name prefix.",
+      "'prefix_match': true  \u2192 name is matched with str_starts_with() so e.g. '_ga' matches '_ga_G-XXXXXXX'.",
+      "'prefix_match': false \u2192 name must match exactly.",
+      "'category' must be either 'essential' or 'optional'.",
+      "'expiry' is a human-readable string, e.g. 'Session', '2 years', '30 min'.",
+      "'type' is one of: HTTP, HTML (localStorage), IndexedDB, Pixel.",
+      "'regulation_notes' is an optional array of compliance references."
+    ]
+  },
+  "cookies": [
+    {
+      "name": "PHPSESSID",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "PHP",
+      "purpose": "Standard PHP server-side session identifier. Required for the server to maintain stateful sessions (login, cart, forms).",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Recital 30 \u2013 necessary for communication over a network"
+      ]
+    },
+    {
+      "name": "JSESSIONID",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Java Application Server",
+      "purpose": "Standard Java EE server-side session identifier.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "wordpress_logged_in",
+      "prefix_match": true,
+      "category": "essential",
+      "provider": "WordPress",
+      "purpose": "Authenticates logged-in WordPress users and keeps them signed in across page loads.",
+      "expiry": "14 days",
+      "type": "HTTP",
+      "regulation_notes": [
+        "Strictly necessary \u2014 exempt from consent requirement under ePrivacy Directive"
+      ]
+    },
+    {
+      "name": "wordpress_sec",
+      "prefix_match": true,
+      "category": "essential",
+      "provider": "WordPress",
+      "purpose": "Secure version of the WordPress authentication cookie.",
+      "expiry": "14 days",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "wordpress_test_cookie",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "WordPress",
+      "purpose": "Tests whether the browser accepts cookies before the login process begins.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "wordpress_",
+      "prefix_match": true,
+      "category": "essential",
+      "provider": "WordPress",
+      "purpose": "WordPress core authentication or admin UI preference cookie.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "wp-settings-",
+      "prefix_match": true,
+      "category": "essential",
+      "provider": "WordPress",
+      "purpose": "Stores per-user admin interface display preferences (e.g. column order, menu collapse state).",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "wp_woocommerce_session_",
+      "prefix_match": true,
+      "category": "essential",
+      "provider": "WooCommerce",
+      "purpose": "Maintains the shopping session data server-side. Required for the cart and checkout to function.",
+      "expiry": "2 days",
+      "type": "HTTP",
+      "regulation_notes": [
+        "Strictly necessary \u2014 exempt from consent requirement under ePrivacy Directive"
+      ]
+    },
+    {
+      "name": "woocommerce_cart_hash",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "WooCommerce",
+      "purpose": "Stores a hash of the cart contents to allow WooCommerce to detect when the cart changes (cache busting).",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "woocommerce_items_in_cart",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "WooCommerce",
+      "purpose": "Tells the browser that items are present in the cart.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "woocommerce_recently_viewed",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "WooCommerce",
+      "purpose": "Stores a list of recently viewed products for the Recently Viewed widget.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "woocommerce_",
+      "prefix_match": true,
+      "category": "essential",
+      "provider": "WooCommerce",
+      "purpose": "WooCommerce session or preference cookie.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "psbdx_consent",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "PSBDx GDPR Cookie Shield",
+      "purpose": "Stores the visitor's cookie consent choices for this website. Required to remember consent decisions.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 7 \u2013 proof of consent; strictly necessary"
+      ]
+    },
+    {
+      "name": "cf_clearance",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Cloudflare",
+      "purpose": "Stores proof that the browser has passed a Cloudflare bot or security challenge.",
+      "expiry": "1 day",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "__cf_bm",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Cloudflare",
+      "purpose": "Bot management cookie \u2014 distinguishes human visitors from automated bots to protect the website.",
+      "expiry": "30 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_cfuvid",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Cloudflare",
+      "purpose": "Used for per-user rate limiting on Cloudflare-proxied sites.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "__cflb",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Cloudflare",
+      "purpose": "Maintains load-balancer session affinity so requests from the same user hit the same server.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "AWSALB",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Amazon Web Services",
+      "purpose": "AWS Application Load Balancer session stickiness \u2014 routes the same user to the same backend.",
+      "expiry": "7 days",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "AWSALBCORS",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Amazon Web Services",
+      "purpose": "AWS ALB session stickiness for cross-origin requests.",
+      "expiry": "7 days",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "AWSELB",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Amazon Web Services",
+      "purpose": "AWS Elastic Load Balancer session stickiness.",
+      "expiry": "1 day",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "wordfence_verifiedHuman",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Wordfence Security",
+      "purpose": "Stores verification that the visitor has passed a Wordfence security challenge.",
+      "expiry": "1 day",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "wfvt_",
+      "prefix_match": true,
+      "category": "essential",
+      "provider": "Wordfence Security",
+      "purpose": "Wordfence visit throttle \u2014 protects the site against login brute-force attacks.",
+      "expiry": "30 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "sucuri_cloudproxy_uuid_",
+      "prefix_match": true,
+      "category": "essential",
+      "provider": "Sucuri",
+      "purpose": "Sucuri Web Application Firewall session identifier.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "__stripe_mid",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Stripe",
+      "purpose": "Stripe fraud prevention cookie \u2014 required for secure payment processing.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "Strictly necessary for e-commerce transaction processing"
+      ]
+    },
+    {
+      "name": "__stripe_sid",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Stripe",
+      "purpose": "Stripe fraud prevention session cookie \u2014 required for secure payment processing.",
+      "expiry": "30 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "__paypal_storage__",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "PayPal",
+      "purpose": "PayPal checkout session storage.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_ga_",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Google Analytics 4",
+      "purpose": "Google Analytics 4 cookie that persists session state and identifies users across sessions.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent",
+        "ePrivacy Directive Art. 5(3) \u2013 requires prior informed consent"
+      ]
+    },
+    {
+      "name": "_ga",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google Analytics",
+      "purpose": "Registers a unique visitor ID used to generate statistical data on how the visitor uses the website.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent",
+        "ePrivacy Directive Art. 5(3)"
+      ]
+    },
+    {
+      "name": "_gid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google Analytics",
+      "purpose": "Registers a unique ID that identifies the user's session within a single day.",
+      "expiry": "24 hours",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_gat_gtag_",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Google Analytics",
+      "purpose": "Used by Google Tag Manager to throttle the request rate to Google Analytics.",
+      "expiry": "1 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_gat",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google Analytics",
+      "purpose": "Throttles the request rate to Google Analytics \u2014 limits data collection on high-traffic sites.",
+      "expiry": "1 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_dc_gtm_",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Google Tag Manager",
+      "purpose": "Google Tag Manager tag firing rate throttle.",
+      "expiry": "1 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "__utma",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google Analytics (Universal \u2014 Legacy)",
+      "purpose": "Tracks unique visitors and distinguishes between new and returning users.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "__utmb",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google Analytics (Universal \u2014 Legacy)",
+      "purpose": "Tracks session start time and number of pageviews within a session.",
+      "expiry": "30 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "__utmc",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google Analytics (Universal \u2014 Legacy)",
+      "purpose": "Interoperates with __utmb to determine when a new session begins.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "__utmt",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google Analytics (Universal \u2014 Legacy)",
+      "purpose": "Throttles the request rate to Google servers.",
+      "expiry": "10 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "__utmz",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google Analytics (Universal \u2014 Legacy)",
+      "purpose": "Stores the traffic source and campaign information for the session.",
+      "expiry": "6 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_gcl_au",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google AdSense",
+      "purpose": "Used by Google AdSense for experimenting with advertisement efficiency across sites.",
+      "expiry": "3 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_gcl_aw",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google Ads",
+      "purpose": "Stores a Google Ads click ID used to measure ad conversion performance.",
+      "expiry": "90 days",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_gcl_dc",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google Ads",
+      "purpose": "DoubleClick campaign conversion tracking.",
+      "expiry": "90 days",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_gcl_",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Google",
+      "purpose": "Google Ads or conversion cookie.",
+      "expiry": "3 months",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "IDE",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google DoubleClick",
+      "purpose": "Used by Google DoubleClick to register and report the website user's actions after viewing or clicking one of the advertiser's ads.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "test_cookie",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google DoubleClick",
+      "purpose": "Used to check if the user's browser supports cookies.",
+      "expiry": "15 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "NID",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google",
+      "purpose": "Registers a unique ID that identifies a returning user's device and is used for targeted advertising.",
+      "expiry": "6 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "CONSENT",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google",
+      "purpose": "Stores the visitor's Google consent state (e.g. for YouTube embeds).",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "SOCS",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google",
+      "purpose": "Stores Google cookie consent choices, used across Google services.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "1P_JAR",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google",
+      "purpose": "Used for ad targeting and analytics based on recent searches and interactions.",
+      "expiry": "1 month",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_fbp",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Facebook / Meta",
+      "purpose": "Facebook Pixel cookie \u2014 identifies browsers to deliver, measure and improve the relevance of ads.",
+      "expiry": "3 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent",
+        "ePrivacy Directive Art. 5(3)"
+      ]
+    },
+    {
+      "name": "_fbc",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Facebook / Meta",
+      "purpose": "Stores a Facebook click ID from an ad click, used for conversion tracking.",
+      "expiry": "3 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "fr",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Facebook / Meta",
+      "purpose": "Used by Facebook to deliver, measure and improve relevance of advertisements.",
+      "expiry": "3 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "datr",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Facebook / Meta",
+      "purpose": "Facebook browser authentication and security cookie.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_hjAbsoluteSessionInProgress",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Hotjar",
+      "purpose": "Counts session pageviews \u2014 used to determine if the user should be included in pageview sampling.",
+      "expiry": "30 min",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_hjIncludedInPageviewSample",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Hotjar",
+      "purpose": "Determines whether the user should be included in Hotjar's pageview data sample.",
+      "expiry": "2 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_hjIncludedInSessionSample",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Hotjar",
+      "purpose": "Determines whether the user should be included in Hotjar's session recording sample.",
+      "expiry": "2 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_hjFirstSeen",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Hotjar",
+      "purpose": "Identifies whether the visit is the user's first time on the website.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_hjTLDTest",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Hotjar",
+      "purpose": "Tests the broadest cookieable subdomain to set subsequent Hotjar cookies.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_hjSessionUser_",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Hotjar",
+      "purpose": "Persists the Hotjar User ID and identifies the user across browser sessions.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_hjSession_",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Hotjar",
+      "purpose": "Holds current session data and suppresses the need for new session requests.",
+      "expiry": "30 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_hjid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Hotjar",
+      "purpose": "Unique Hotjar user ID set on the first visit \u2014 used to identify the visitor across sessions.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "__hstc",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "HubSpot",
+      "purpose": "Main HubSpot tracking cookie \u2014 stores visitor identity and session history.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "hubspotutk",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "HubSpot",
+      "purpose": "Tracks a visitor's identity and is passed to HubSpot to deduplicate contacts on form submission.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "__hssc",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "HubSpot",
+      "purpose": "Keeps track of sessions within a visitor's visit for HubSpot analytics.",
+      "expiry": "30 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "__hssrc",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "HubSpot",
+      "purpose": "Detects when a browser session has been restarted.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "hs_ab_test",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "HubSpot",
+      "purpose": "Stores the A/B test variant shown to the visitor.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "intercom-id-",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Intercom",
+      "purpose": "Anonymous visitor identifier used by the Intercom chat widget.",
+      "expiry": "9 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "intercom-session-",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Intercom",
+      "purpose": "Active Intercom Messenger session identifier.",
+      "expiry": "1 week",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "intercom-device-id-",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Intercom",
+      "purpose": "Cross-session device identity for Intercom.",
+      "expiry": "9 months",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "li_fat_id",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "LinkedIn",
+      "purpose": "LinkedIn first-party ad tracking cookie for conversion measurement.",
+      "expiry": "30 days",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "li_sugr",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "LinkedIn",
+      "purpose": "Probabilistic user matching for LinkedIn conversion tracking.",
+      "expiry": "90 days",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "bcookie",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "LinkedIn",
+      "purpose": "LinkedIn browser identifier cookie.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "bscookie",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "LinkedIn",
+      "purpose": "LinkedIn secure browser identifier cookie.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "AnalyticsSyncHistory",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "LinkedIn",
+      "purpose": "Syncs analytics data across LinkedIn advertising network.",
+      "expiry": "30 days",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "UserMatchHistory",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "LinkedIn",
+      "purpose": "LinkedIn Ads ID syncing for remarketing.",
+      "expiry": "30 days",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_twitter_sess",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Twitter / X",
+      "purpose": "Twitter/X session cookie.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "guest_id_ads",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Twitter / X",
+      "purpose": "Used for ad targeting for non-logged-in Twitter/X users.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "guest_id_marketing",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Twitter / X",
+      "purpose": "Marketing attribution for non-logged-in Twitter/X users.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "guest_id",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Twitter / X",
+      "purpose": "Identifies guest users for analytics on Twitter/X.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "personalization_id",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Twitter / X",
+      "purpose": "Enables personalised ad targeting and content recommendations on Twitter/X.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "muc_ads",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Twitter / X",
+      "purpose": "Ad conversion tracking for Twitter/X ad campaigns.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_pinterest_sess",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Pinterest",
+      "purpose": "Pinterest session cookie.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_pinterest_ct_ua",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Pinterest",
+      "purpose": "Pinterest conversion tag \u2014 tracks user actions after seeing or clicking a Pinterest ad.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_epik",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Pinterest",
+      "purpose": "Pinterest enhanced match cookie \u2014 improves conversion measurement accuracy.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_ttp",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "TikTok",
+      "purpose": "TikTok Pixel cookie \u2014 measures ad campaign performance and tracks conversions.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "tt_webid_v2",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "TikTok",
+      "purpose": "Visitor identifier for TikTok ad attribution (v2).",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "tt_webid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "TikTok",
+      "purpose": "Visitor identifier for TikTok ad attribution.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_ym_uid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Yandex Metrica",
+      "purpose": "Unique user identifier for Yandex Metrica analytics.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_ym_d",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Yandex Metrica",
+      "purpose": "Stores the date of the user's first visit for Yandex Metrica.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_ym_isad",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Yandex Metrica",
+      "purpose": "Detects whether the visitor uses an ad blocker.",
+      "expiry": "2 days",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_ym_visorc",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Yandex Metrica",
+      "purpose": "Enables the scroll map report in Yandex Metrica Webvisor.",
+      "expiry": "30 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "yandexuid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Yandex",
+      "purpose": "Cross-service user identifier for Yandex products.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "drift_aid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Drift",
+      "purpose": "Anonymous visitor ID for the Drift live chat widget.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "drift_campaign_refresh",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Drift",
+      "purpose": "Drift campaign session refresh tracking.",
+      "expiry": "30 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "crisp-client",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Crisp",
+      "purpose": "Crisp live chat widget visitor session identifier.",
+      "expiry": "6 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "__zlcmid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Zendesk",
+      "purpose": "Zendesk live chat visitor identity cookie.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "tidio_state",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Tidio",
+      "purpose": "Stores the current state of the Tidio chat widget.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "tidio_running",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Tidio",
+      "purpose": "Tracks whether the Tidio chat widget is running.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_mcid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Mailchimp",
+      "purpose": "Mailchimp audience analytics and tracking cookie.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "mc_",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Mailchimp",
+      "purpose": "Mailchimp tracking cookie.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "klaviyo",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Klaviyo",
+      "purpose": "Klaviyo email and marketing engagement tracking.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "wp-postpass_",
+      "prefix_match": true,
+      "category": "essential",
+      "provider": "WordPress",
+      "purpose": "Stores the password entered by a user to access a password-protected WordPress post.",
+      "expiry": "10 days",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "comment_author_",
+      "prefix_match": true,
+      "category": "essential",
+      "provider": "WordPress",
+      "purpose": "Remembers the name entered in the comment form so the user does not need to retype it on future visits.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "comment_author_email_",
+      "prefix_match": true,
+      "category": "essential",
+      "provider": "WordPress",
+      "purpose": "Remembers the email address entered in the comment form.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "comment_author_url_",
+      "prefix_match": true,
+      "category": "essential",
+      "provider": "WordPress",
+      "purpose": "Remembers the URL entered in the comment form.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "wp_lang",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "WordPress",
+      "purpose": "Stores the preferred language for the WordPress admin interface.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "akismet_comment_nonce",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Akismet",
+      "purpose": "Security nonce used by Akismet to validate that comment submissions are legitimate and prevent CSRF attacks.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "wc_fragments_",
+      "prefix_match": true,
+      "category": "essential",
+      "provider": "WooCommerce",
+      "purpose": "Stores WooCommerce cart widget HTML fragments in the browser for faster cart preview rendering.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "store_notice",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "WooCommerce",
+      "purpose": "Stores whether the WooCommerce store notice banner has been dismissed by the visitor.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "woocommerce_checkout_billing_id",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "WooCommerce",
+      "purpose": "Preserves the billing address during the checkout process.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": [
+        "Strictly necessary for checkout"
+      ]
+    },
+    {
+      "name": "wc_order_attribution",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "WooCommerce",
+      "purpose": "Tracks the marketing source and channel that led to an order (WooCommerce Order Attribution feature).",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent if used for marketing analytics"
+      ]
+    },
+    {
+      "name": "AWSALBAPP",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Amazon Web Services",
+      "purpose": "AWS Application Load Balancer stickiness for application-level routing.",
+      "expiry": "1 day",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_aws_waf_token",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Amazon Web Services",
+      "purpose": "AWS WAF (Web Application Firewall) challenge token \u2014 distinguishes legitimate traffic from bot attacks.",
+      "expiry": "1 hour",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "__cf_logged_in",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Cloudflare",
+      "purpose": "Indicates that the current visitor has passed a Cloudflare Access authentication check.",
+      "expiry": "1 day",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "CF_AppSession",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Cloudflare",
+      "purpose": "Cloudflare Access application session token for authenticated users.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "__Secure-3PSID",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google",
+      "purpose": "Google cross-site security cookie for signed-in users \u2014 used for ad personalisation and Google services authentication.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "SID",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google",
+      "purpose": "Google account security and authentication cookie \u2014 identifies signed-in Google users.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "HSID",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google",
+      "purpose": "Google security cookie used to prevent unauthorised account access.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "SSID",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google",
+      "purpose": "Google security cookie \u2014 stores signed-in user's data and preferences for Google services.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "APISID",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google",
+      "purpose": "Used by Google to build a profile of website visitor interests to show relevant ads.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "SAPISID",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google",
+      "purpose": "Used by Google to build a profile of website visitor interests; secure version of APISID.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "AEC",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google",
+      "purpose": "Ensures requests within a Google browsing session are made by the user and not by other sites.",
+      "expiry": "6 months",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "OTZ",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google",
+      "purpose": "Used by Google Analytics to aggregate and analyse visits across Google services.",
+      "expiry": "1 month",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "DV",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google",
+      "purpose": "Google user preference and personalisation cookie.",
+      "expiry": "7 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "SEARCH_SAMESITE",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google",
+      "purpose": "SameSite cookie that prevents the browser from sending this cookie along with cross-site requests for Google Search.",
+      "expiry": "6 months",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "gtm_debug",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google Tag Manager",
+      "purpose": "Enables Google Tag Manager preview and debug mode.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_gac_",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Google Analytics",
+      "purpose": "Stores campaign click information \u2014 used by Google Analytics to attribute conversions to ad campaigns.",
+      "expiry": "90 days",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_gcp_",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Google Analytics",
+      "purpose": "Google Analytics click path tracking cookie.",
+      "expiry": "90 days",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_gads",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google Ads",
+      "purpose": "Google Ads Remarketing \u2014 enables ad targeting for users who have previously visited the site.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "c_user",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Facebook / Meta",
+      "purpose": "Stores the Facebook user ID of the currently logged-in user.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "xs",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Facebook / Meta",
+      "purpose": "Facebook session cookie \u2014 used alongside c_user to verify the logged-in session.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "sb",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Facebook / Meta",
+      "purpose": "Facebook browser identification for security and login integrity purposes.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "wd",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Facebook / Meta",
+      "purpose": "Stores the browser window dimensions to optimise page rendering for Facebook.",
+      "expiry": "1 week",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_hjDonePolls",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Hotjar",
+      "purpose": "Stores which Hotjar surveys a visitor has already completed to avoid showing them again.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_hjMinimizedPolls",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Hotjar",
+      "purpose": "Stores which Hotjar survey widgets the visitor has minimised.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_hjShownFeedbackMessage",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Hotjar",
+      "purpose": "Stores that a Hotjar feedback message has been shown and minimised.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_hjRecordingEnabled",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Hotjar",
+      "purpose": "Indicates that a Hotjar session recording is in progress for the current visit.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_hjRecordingLastActivity",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Hotjar",
+      "purpose": "Tracks the time of the visitor's last activity during a Hotjar recording session.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_hjCachedUserAttributes",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Hotjar",
+      "purpose": "Caches Hotjar user attributes set via the Hotjar Identify API.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "hs_message_is_open",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "HubSpot",
+      "purpose": "Stores the open/closed state of the HubSpot live chat widget for the visitor.",
+      "expiry": "30 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "hs-messages-is-open",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "HubSpot",
+      "purpose": "Persists whether the HubSpot Conversations inbox is open for the visitor.",
+      "expiry": "30 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "hs-messages-hide-welcome-message",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "HubSpot",
+      "purpose": "Prevents the HubSpot welcome message from appearing again after it has been dismissed.",
+      "expiry": "1 day",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "__hs_opt_out",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "HubSpot",
+      "purpose": "Records that the visitor has opted out of HubSpot tracking cookies.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 7 \u2013 proof of consent withdrawal"
+      ]
+    },
+    {
+      "name": "__hs_do_not_track",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "HubSpot",
+      "purpose": "Instructs HubSpot not to track the visitor \u2014 set in response to the Do Not Track browser header.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "lms_analytics",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "LinkedIn",
+      "purpose": "Used by LinkedIn to identify members for analytics reporting.",
+      "expiry": "30 days",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "li_gc",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "LinkedIn",
+      "purpose": "Stores the visitor's consent state for LinkedIn cookies.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "liap",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "LinkedIn",
+      "purpose": "LinkedIn cookie for users who log in via third-party sites using the LinkedIn OAuth flow.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "at_check",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Adobe Analytics",
+      "purpose": "Used by Adobe Target to check whether cookies are enabled in the visitor's browser.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "mbox",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Adobe Analytics",
+      "purpose": "Adobe Target mbox cookie \u2014 enables A/B testing and personalised experience delivery.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "s_cc",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Adobe Analytics",
+      "purpose": "Determines whether cookies are enabled in the visitor's browser for Adobe Analytics.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "s_sq",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Adobe Analytics",
+      "purpose": "Stores information about the previous link clicked by the visitor for Adobe Analytics ClickMap.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "s_vi",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Adobe Analytics",
+      "purpose": "Unique visitor ID cookie for Adobe Analytics \u2014 identifies and tracks individual visitors.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "demdex",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Adobe Audience Manager",
+      "purpose": "Adobe Audience Manager cookie \u2014 assigns a unique ID to site visitors to track across third-party domains.",
+      "expiry": "180 days",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "mp_",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Mixpanel",
+      "purpose": "Mixpanel analytics cookie \u2014 identifies and tracks user behaviour and engagement events.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "__mp_opt_in_out_",
+      "prefix_match": true,
+      "category": "essential",
+      "provider": "Mixpanel",
+      "purpose": "Stores the visitor's opt-in or opt-out preference for Mixpanel tracking.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 7 \u2013 proof of consent"
+      ]
+    },
+    {
+      "name": "ajs_anonymous_id",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Segment",
+      "purpose": "Segment analytics anonymous user ID \u2014 identifies visitors before they authenticate.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "ajs_user_id",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Segment",
+      "purpose": "Stores the identified Segment user ID after a visitor has logged in or been identified.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "__ar_v4",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Amplitude",
+      "purpose": "Amplitude product analytics \u2014 stores session and user data for behavioural analysis.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "amplitude_id_",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Amplitude",
+      "purpose": "Amplitude unique device identifier used to track user events across sessions.",
+      "expiry": "10 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_hp2_id.",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Heap Analytics",
+      "purpose": "Heap analytics user identifier \u2014 automatically captures all user interactions.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_hp2_ses_props.",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Heap Analytics",
+      "purpose": "Stores Heap session properties for the current visitor session.",
+      "expiry": "30 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_vis_opt_s",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "VWO (Visual Website Optimizer)",
+      "purpose": "Stores the visitor's session number for VWO A/B testing.",
+      "expiry": "100 days",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_vis_opt_test_cookie",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "VWO (Visual Website Optimizer)",
+      "purpose": "Tests whether the visitor's browser accepts cookies before VWO tracking begins.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_vwo_uuid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "VWO (Visual Website Optimizer)",
+      "purpose": "Unique visitor ID for VWO A/B testing and conversion tracking.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_vwo_uuid_v2",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "VWO (Visual Website Optimizer)",
+      "purpose": "Unique visitor ID for VWO A/B testing (v2 format).",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "optimizelyEndUserId",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Optimizely",
+      "purpose": "Stores a unique visitor ID for Optimizely A/B testing and personalisation experiments.",
+      "expiry": "6 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "optimizelySegments",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Optimizely",
+      "purpose": "Stores audience segment information for Optimizely targeting rules.",
+      "expiry": "6 months",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_ab",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Shopify",
+      "purpose": "Shopify A/B testing cookie used to test different store configurations.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_shopify_s",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Shopify",
+      "purpose": "Shopify session analytics cookie \u2014 tracks navigation within the store.",
+      "expiry": "30 min",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_shopify_sa_t",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Shopify",
+      "purpose": "Shopify marketing and referral analytics cookie \u2014 tracks how users arrived at the store.",
+      "expiry": "30 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_shopify_sa_p",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Shopify",
+      "purpose": "Shopify partner analytics referral tracking cookie.",
+      "expiry": "30 min",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_shopify_y",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Shopify",
+      "purpose": "Shopify unique visitor identifier for analytics purposes.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "cart",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Shopify",
+      "purpose": "Stores the visitor's shopping cart contents on Shopify-powered stores.",
+      "expiry": "2 weeks",
+      "type": "HTTP",
+      "regulation_notes": [
+        "Strictly necessary for e-commerce cart functionality"
+      ]
+    },
+    {
+      "name": "secure_customer_sig",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Shopify",
+      "purpose": "Keeps a Shopify customer authenticated and their session secure.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "Strictly necessary for authenticated customer sessions"
+      ]
+    },
+    {
+      "name": "__hs_campaign",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "HubSpot",
+      "purpose": "Tracks the marketing campaign that referred a visitor for HubSpot attribution reporting.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "MUID",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Microsoft",
+      "purpose": "Microsoft unique user identifier \u2014 used across Microsoft advertising and Bing services.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "MSPTC",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Microsoft",
+      "purpose": "Microsoft tracking cookie used for advertising and analytics across Microsoft services.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_uetsid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Microsoft Advertising",
+      "purpose": "Microsoft UET (Universal Event Tracking) session cookie \u2014 measures conversions from Microsoft Ads.",
+      "expiry": "1 day",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_uetvid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Microsoft Advertising",
+      "purpose": "Microsoft UET unique visitor cookie \u2014 identifies users across sessions for remarketing.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_clck",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Microsoft Clarity",
+      "purpose": "Microsoft Clarity persistent user identifier \u2014 tracks user behaviour sessions across visits.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_clsk",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Microsoft Clarity",
+      "purpose": "Microsoft Clarity session identifier \u2014 connects page views within the same session.",
+      "expiry": "1 day",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "CLID",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Microsoft Clarity",
+      "purpose": "Identifies the first time Microsoft Clarity saw this user at any site using Clarity.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "SM",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Microsoft Clarity",
+      "purpose": "Microsoft Clarity cookie that collects information on user behaviour on the website.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "MR",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Microsoft",
+      "purpose": "Used to collect statistics about the use of the website and is used to identify unique visitors.",
+      "expiry": "7 days",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "SRM_B",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Microsoft Advertising",
+      "purpose": "Collects data about visits on multiple websites to present relevant advertisements.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_tt_enable_cookie",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "TikTok",
+      "purpose": "Indicates that TikTok tracking is enabled for the current visitor.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "tt_sessionId",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "TikTok",
+      "purpose": "TikTok session identifier for tracking visits and ad conversion events.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "snap-aid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Snapchat",
+      "purpose": "Snapchat Pixel visitor identifier for conversion tracking and audience targeting.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "sc_at",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Snapchat",
+      "purpose": "Snapchat advertising attribution cookie.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_scid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Snapchat",
+      "purpose": "Snapchat unique user ID for the Snap Pixel.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "_sctr",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Snapchat",
+      "purpose": "Snapchat Pixel tracking state and user identifier.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "twid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Twitter / X",
+      "purpose": "Twitter/X authenticated user identifier cookie.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "ct0",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Twitter / X",
+      "purpose": "CSRF protection token for Twitter/X authenticated users.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "kmonit_session",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Kissmetrics",
+      "purpose": "Kissmetrics session identifier \u2014 tracks events per visit for product analytics.",
+      "expiry": "30 min",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "km_ai",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Kissmetrics",
+      "purpose": "Kissmetrics anonymous visitor ID \u2014 tracks visitors before and after sign-up.",
+      "expiry": "5 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "km_lv",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Kissmetrics",
+      "purpose": "Stores the time of the visitor's last visit for Kissmetrics return visit analysis.",
+      "expiry": "5 years",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "__cuid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Chartbeat",
+      "purpose": "Chartbeat unique visitor ID for real-time content analytics.",
+      "expiry": "5 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "pulsemeter",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Chartbeat",
+      "purpose": "Chartbeat pulsemeter session tracking cookie.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "__jid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Disqus",
+      "purpose": "Disqus commenter unique identifier \u2014 tracks comment activity across sites.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "disqus_unique",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Disqus",
+      "purpose": "Stores a unique ID to identify returning Disqus visitors.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "ab.storage.deviceId.",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Braze",
+      "purpose": "Braze (formerly Appboy) anonymous device identifier for cross-session tracking and engagement.",
+      "expiry": "1 year",
+      "type": "HTML",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "ab.storage.userId.",
+      "prefix_match": true,
+      "category": "optional",
+      "provider": "Braze",
+      "purpose": "Stores the identified Braze user ID for personalised marketing automation.",
+      "expiry": "1 year",
+      "type": "HTML",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "lc_window_state",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "LiveChat",
+      "purpose": "Stores the open or minimised state of the LiveChat widget window.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "__lc_vid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "LiveChat",
+      "purpose": "LiveChat unique visitor identifier for tracking chat history across sessions.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "__lc_cst",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "LiveChat",
+      "purpose": "LiveChat cookie consent state cookie.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "olark.SID",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Olark",
+      "purpose": "Olark live chat session identifier.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "olark.CUSTOMER_ID",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Olark",
+      "purpose": "Olark unique visitor ID for persistent chat history.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "mailchimp_landing_site",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Mailchimp",
+      "purpose": "Tracks the landing page that a Mailchimp subscriber visited before submitting a form.",
+      "expiry": "1 month",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "__kla_id",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Klaviyo",
+      "purpose": "Klaviyo unique visitor ID used for email marketing attribution and segmentation.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "fomo_session",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Fomo",
+      "purpose": "Fomo social proof widget session cookie \u2014 tracks whether a visitor has seen recent activity notifications.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "recaptcha",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Google reCAPTCHA",
+      "purpose": "Google reCAPTCHA cookie used to distinguish human users from bots for form submissions.",
+      "expiry": "6 months",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_grecaptcha",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Google reCAPTCHA",
+      "purpose": "Google reCAPTCHA invisible challenge cookie \u2014 provides risk analysis to protect forms from spam.",
+      "expiry": "6 months",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "rc::a",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Google reCAPTCHA",
+      "purpose": "Google reCAPTCHA v3 persistent visitor token for bot discrimination.",
+      "expiry": "Persistent",
+      "type": "HTML",
+      "regulation_notes": []
+    },
+    {
+      "name": "CookieConsent",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Cookiebot",
+      "purpose": "Stores the visitor's cookie consent state for the current domain \u2014 Cookiebot CMP.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 7 \u2013 proof of consent"
+      ]
+    },
+    {
+      "name": "CookieConsentBulkTicket",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Cookiebot",
+      "purpose": "Enables cross-domain consent synchronisation for Cookiebot installations.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "euconsent-v2",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "IAB TCF 2.x",
+      "purpose": "Stores the visitor's encoded consent string as defined by IAB Europe Transparency and Consent Framework v2.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 7 \u2013 proof of consent; IAB TCF 2.2 standard"
+      ]
+    },
+    {
+      "name": "addtl_consent",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "IAB TCF 2.x",
+      "purpose": "IAB TCF additional consent string \u2014 stores consent for vendors not registered in the IAB Global Vendor List.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "IAB TCF 2.2 Additional Consent Mode"
+      ]
+    },
+    {
+      "name": "osano_consentmanager",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Osano",
+      "purpose": "Stores the visitor's cookie consent preferences for Osano Consent Management Platform.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 7 \u2013 proof of consent"
+      ]
+    },
+    {
+      "name": "OptanonConsent",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "OneTrust",
+      "purpose": "OneTrust CMP cookie \u2014 records the visitor's cookie consent preferences for the domain.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 7 \u2013 proof of consent"
+      ]
+    },
+    {
+      "name": "OptanonAlertBoxClosed",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "OneTrust",
+      "purpose": "Records when the OneTrust cookie consent banner was dismissed by the visitor.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "cmapi_cookie_privacy",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "TrustArc",
+      "purpose": "TrustArc cookie consent banner state \u2014 records whether the visitor has responded to the consent notice.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 7 \u2013 proof of consent"
+      ]
+    },
+    {
+      "name": "notice_preferences",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "TrustArc",
+      "purpose": "TrustArc privacy notice preference storage.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "cookielawinfo-checkbox-",
+      "prefix_match": true,
+      "category": "essential",
+      "provider": "GDPR Cookie Consent (WebToffee / WP Legal Pages)",
+      "purpose": "Records the visitor's consent choice for a specific cookie category in the GDPR Cookie Consent WordPress plugin.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 7 \u2013 proof of consent"
+      ]
+    },
+    {
+      "name": "viewed_cookie_policy",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "GDPR Cookie Consent (WebToffee / WP Legal Pages)",
+      "purpose": "Records that the visitor has viewed and dismissed the cookie consent banner.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "elementor",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Elementor",
+      "purpose": "Stores which Elementor experiments the current session is included in for feature flagging.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "wp-rocket-is-user-bot",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "WP Rocket",
+      "purpose": "WP Rocket cache plugin cookie that identifies whether the current visitor is a bot.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "wpr_siteground_no_cache",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "SiteGround / WP Rocket",
+      "purpose": "Instructs the SiteGround server-side cache to bypass caching for the current visitor session.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "sgcache",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "SiteGround",
+      "purpose": "SiteGround caching cookie \u2014 bypasses server cache for logged-in users or dynamic sessions.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "nitropack_usergroup",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "NitroPack",
+      "purpose": "NitroPack performance plugin cookie \u2014 assigns users to groups for cache segmentation.",
+      "expiry": "1 month",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "GPC_",
+      "prefix_match": true,
+      "category": "essential",
+      "provider": "Browser / W3C Global Privacy Control",
+      "purpose": "Stores the visitor's Global Privacy Control (GPC) opt-out signal, indicating a do-not-sell preference.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "CCPA Section 1798.120 \u2013 opt-out of sale",
+        "CPRA \u2013 recognised as opt-out signal"
+      ]
+    },
+    {
+      "name": "do-not-sell",
+      "prefix_match": false,
+      "category": "essential",
+      "provider": "Various CMP Platforms",
+      "purpose": "CCPA do-not-sell opt-out preference cookie \u2014 records that the visitor has opted out of personal data sale.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "CCPA Section 1798.120",
+        "CPRA"
+      ]
+    },
+    {
+      "name": "yt-remote-device-id",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "YouTube",
+      "purpose": "Stores the visitor's video player preferences for embedded YouTube videos.",
+      "expiry": "Persistent",
+      "type": "HTML",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "yt-remote-connected-devices",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "YouTube",
+      "purpose": "Stores the visitor's linked devices for YouTube personalisation.",
+      "expiry": "Persistent",
+      "type": "HTML",
+      "regulation_notes": []
+    },
+    {
+      "name": "VISITOR_INFO1_LIVE",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "YouTube",
+      "purpose": "Attempts to estimate bandwidth on pages with integrated YouTube videos to optimise video quality.",
+      "expiry": "6 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "YSC",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "YouTube",
+      "purpose": "Unique session ID cookie for YouTube \u2014 registers a user's actions during an embedded video session.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "PREF",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "YouTube",
+      "purpose": "Stores user preferences for YouTube video playback settings such as autoplay and quality.",
+      "expiry": "8 months",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "vuid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Vimeo",
+      "purpose": "Vimeo unique identifier cookie \u2014 tracks video views and interactions with embedded Vimeo players.",
+      "expiry": "2 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "player",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Vimeo",
+      "purpose": "Stores Vimeo player preferences for embedded videos.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "__gads",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google Ads",
+      "purpose": "Registers visitor interaction with website ads to measure effectiveness of Google Ads campaigns.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "__gpi",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google Ads",
+      "purpose": "Stores ad performance data for Google Publisher tags and AdSense ads.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "receive-cookie-deprecation",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Google",
+      "purpose": "Google Privacy Sandbox trial cookie \u2014 used in third-party cookie deprecation testing.",
+      "expiry": "6 months",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "_rdt_uuid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Reddit",
+      "purpose": "Reddit Pixel cookie \u2014 tracks Reddit ad conversions and user interactions.",
+      "expiry": "3 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "session_tracker",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Reddit",
+      "purpose": "Reddit session tracking cookie for analytics and attribution.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "outbrain_cid_fetch",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Outbrain",
+      "purpose": "Outbrain content recommendation and ad targeting visitor identifier.",
+      "expiry": "3 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "obuid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Outbrain",
+      "purpose": "Outbrain unique browser identifier for personalised content recommendations.",
+      "expiry": "3 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "taboola_session_id",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Taboola",
+      "purpose": "Taboola native advertising session identifier for content recommendation targeting.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "t_gid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Taboola",
+      "purpose": "Taboola unique visitor ID for content personalisation and ad targeting.",
+      "expiry": "1 year",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "criteo_write_test",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Criteo",
+      "purpose": "Tests whether the visitor's browser accepts cookies before Criteo tracking begins.",
+      "expiry": "Session",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "uid",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Criteo",
+      "purpose": "Criteo unique user identifier for cross-site retargeting and personalised ads.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 6(1)(a) \u2013 requires consent"
+      ]
+    },
+    {
+      "name": "cto_bundle",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Criteo",
+      "purpose": "Stores Criteo user consent and ad targeting preferences bundle.",
+      "expiry": "13 months",
+      "type": "HTTP",
+      "regulation_notes": []
+    },
+    {
+      "name": "OAID",
+      "prefix_match": false,
+      "category": "optional",
+      "provider": "Criteo",
+      "purpose": "Criteo Opt-out Advertising ID \u2014 records that a visitor has opted out of Criteo ads.",
+      "expiry": "5 years",
+      "type": "HTTP",
+      "regulation_notes": [
+        "GDPR Art. 7 \u2013 proof of consent withdrawal"
+      ]
+    }
+  ]
+}
